@@ -8,7 +8,6 @@ Feature: Login as different users
     Then the user should be able to login
     #And the title contains "Dashboard"
 
-
   Scenario: login as a driver2
     Given the user logged in as "sales manager"
     Then the user should be able to login

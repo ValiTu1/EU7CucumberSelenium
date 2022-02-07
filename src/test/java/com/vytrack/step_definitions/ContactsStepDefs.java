@@ -63,10 +63,12 @@ public class ContactsStepDefs {
         System.out.println(userInfo);
 
         //use map information to login and also verify firstname and lastname
+
+        //login with map info
         new LoginPage().login(userInfo.get("username"), userInfo.get("password"));
 
-        BrowserUtils.waitFor(5);
-        String actualFullName = new DashboardPage().userName.getText();
+        //verify firstname and lastname
+        String actualFullName = new DashboardPage().getUserName();
         System.out.println(actualFullName);
         String expectedUserName = userInfo.get("firstname") + " " + userInfo.get("lastname");
 

@@ -1,6 +1,6 @@
 Feature: Contacts page
 
-
+@wip
   Scenario: Default page number
     Given the user is on the login page
     And the user enters the driver information
@@ -20,7 +20,7 @@ Feature: Contacts page
       | Reports & Segments |
       | System             |
 
-  @wip
+
   Scenario: login as a given use
     Given the user is on the login page
     When the use logs in using following credentials
