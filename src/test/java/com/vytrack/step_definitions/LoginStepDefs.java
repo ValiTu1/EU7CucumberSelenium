@@ -37,9 +37,9 @@ public class LoginStepDefs {
 
     @Then("the user should be able to login")
     public void the_user_should_be_able_to_login() {
-        String actualTitle = Driver.get().getTitle();
-        BrowserUtils.waitFor(4);
-        Assert.assertEquals("Dashboard", actualTitle);
+        String actualUrl = Driver.get().getCurrentUrl();
+        BrowserUtils.waitFor(6);
+        Assert.assertEquals("https://qa1.vytrack.com/", actualUrl);
     }
 
     @When("the user enters store manager information")
@@ -53,13 +53,24 @@ public class LoginStepDefs {
 
     @When("the user logs in using {string} and {string}")
     public void the_user_logs_in_using_and(String username, String password) {
-        new LoginPage().login(username, password);
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(username, password);
     }
 
     @Then("the title contains {string}")
-    public void the_title_contains(String expectedTitle) {
+    public void  the_title_contains(String expectedTitle) {
         BrowserUtils.waitFor(4);
         Assert.assertTrue(Driver.get().getTitle().contains(expectedTitle));
+    }
+
+    @Given("the user logged in as {string}")
+    public void the_user_logged_in_as(String userType) throws InterruptedException{
+
+        String username = userType.toLowerCase().replace(" " , "");
+
+        LoginPage loginPage = new LoginPage();
+                loginPage.login(ConfigurationReader.get(username +"_username"), ConfigurationReader.get(username+ "_password"));
+
     }
 
 
