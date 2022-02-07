@@ -8,11 +8,13 @@ import com.vytrack.utilities.Driver;
 import io.cucumber.java.an.E;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ContactsStepDefs {
 
@@ -53,5 +55,21 @@ public class ContactsStepDefs {
 
 
         Assert.assertEquals(menuOptions, actualOptions);
+    }
+
+    @When("the use logs in using following credentials")
+    public void theUseLogsInUsingFollowingCredentials(Map<String, String> userInfo) {
+
+        System.out.println(userInfo);
+
+        //use map information to login and also verify firstname and lastname
+        new LoginPage().login(userInfo.get("username"), userInfo.get("password"));
+
+        BrowserUtils.waitFor(5);
+        String actualFullName = new DashboardPage().userName.getText();
+        System.out.println(actualFullName);
+        String expectedUserName = userInfo.get("firstname") + " " + userInfo.get("lastname");
+
+        Assert.assertEquals(expectedUserName, actualFullName);
     }
 }
