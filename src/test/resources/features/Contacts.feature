@@ -5,7 +5,7 @@ Feature: Contacts page
     Given the user is on the login page
     And the user enters the driver information
     When the users navigates to "Customers" "Contacts"
-    Then default page number should be 1
+    Then default page number should be 2
 
 
   Scenario: Menu options
