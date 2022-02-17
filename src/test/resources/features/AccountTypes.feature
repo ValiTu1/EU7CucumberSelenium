@@ -6,13 +6,13 @@ Feature: Account types
     When the users navigates to "Activities" "Calendar Events"
     Then the title contains "Calendar Events - Activities"
 
-  @wip
+
   Scenario: Sales manager user
     Given the user logged in as "sales manager"
     When the users navigates to "Customers" "Accounts"
     Then the title contains "Accounts - Customers"
 
-  @wip @smoke
+   @smoke
   Scenario: Store manager user
     Given the user logged in as "store manager"
     When the users navigates to "Customers" "Contacts"
