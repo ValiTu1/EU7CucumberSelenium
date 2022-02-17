@@ -1,7 +1,7 @@
 @navigate
 Feature: Users should be able to navigate using top menu
 
-
+  @smoke
   Scenario:Navigate to Fleet- Vehicles
     Given the user is on the login page
     And the user enter sales manager information

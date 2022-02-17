@@ -13,8 +13,8 @@ public class Hooks {
     @Before
     public void setUP(){
         System.out.println("\tThis is coming from BEFORE");
-        /*String url = ConfigurationReader.get("url");
-        Driver.get().get(url);*/
+        String url = ConfigurationReader.get("url");
+        Driver.get().get(url);
     }
 
     @After

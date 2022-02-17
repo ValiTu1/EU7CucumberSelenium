@@ -1,11 +1,10 @@
 Feature: Contacts page
 
-@wip
   Scenario: Default page number
     Given the user is on the login page
     And the user enters the driver information
     When the users navigates to "Customers" "Contacts"
-    Then default page number should be 2
+    Then default page number should be  1
 
 
   Scenario: Menu options
@@ -21,13 +20,17 @@ Feature: Contacts page
       | System             |
 
 
-  Scenario: login as a given use
+  Scenario Outline: login as <user>
     Given the user is on the login page
     When the use logs in using following credentials
-      | username  | user10      |
+      | username  | <user>>     |
       | password  | UserUser123 |
-      | firstname | Ara         |
-      | lastname  | Ondricka    |
+      | firstname | <firstName> |
+      | lastname  | <lastName>  |
     Then the user should be able to login
+    Examples:
+      | user           | firstName | lastName         |
+      | user10         | Ara       | Ondricka         |
+      | storemanager85 | Pearl     | Tremaine Wuckert |
 
 
