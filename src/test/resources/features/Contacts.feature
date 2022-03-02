@@ -33,12 +33,23 @@ Feature: Contacts page
       | user10         | Ara       | Ondricka         |
       | storemanager85 | Pearl     | Tremaine Wuckert |
 
-    @wip
-    Scenario:  Contacts test with email
-      Given the user logged in as "sales manager"
-      And the users navigates to "Customers" "Contacts"
-      When the user clicks the "mbrackstone9@example.com" from contacts
-      Then information should be same with database
+  @db
+  Scenario:  Contacts test with email
+    Given the user logged in as "sales manager"
+    And the users navigates to "Customers" "Contacts"
+    When the user clicks the "jakop@gmail.com" from contacts
+    Then the information for "jakop@gmail.com" should be same with database
 
+  @wip @db
+  Scenario Outline: Contacts test <email>
+    Given the user logged in as "sales manager"
+    And the users navigates to "Customers" "Contacts"
+    When the user clicks the "<email>" from contacts
+    Then the information for "<email>" should be same with database
+
+    Examples:
+      | email                    |
+      | jakop@gmail.com          |
+      | mbrackstone9@example.com |
 
 
