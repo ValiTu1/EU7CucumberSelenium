@@ -37,7 +37,7 @@ Feature: Contacts page
     Scenario:  Contacts test with email
       Given the user logged in as "sales manager"
       And the users navigates to "Customers" "Contacts"
-      When the user clicks the "ab.elias45@gmail.com" from contacts
+      When the user clicks the "mbrackstone9@example.com" from contacts
       Then information should be same with database
 
 
