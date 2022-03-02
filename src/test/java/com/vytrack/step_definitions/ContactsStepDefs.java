@@ -1,5 +1,6 @@
 package com.vytrack.step_definitions;
 
+import com.vytrack.pages.ContactsPage;
 import com.vytrack.pages.DashboardPage;
 import com.vytrack.pages.LoginPage;
 import com.vytrack.utilities.BrowserUtils;
@@ -17,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ContactsStepDefs {
+
+    ContactsPage contactsPage = new ContactsPage();
 
     @Given("the user logged is as {string}")
     public void the_user_logged_is_as(String userType) {
@@ -73,5 +76,16 @@ public class ContactsStepDefs {
         String expectedUserName = userInfo.get("firstname") + " " + userInfo.get("lastname");
 
         Assert.assertEquals(expectedUserName, actualFullName);
+    }
+
+    @When("the user clicks the {string} from contacts")
+    public void theUserClicksTheFromContacts(String email) {
+        BrowserUtils.waitFor(2);
+        contactsPage.getContactEmail(email).click();;
+    }
+
+    @Then("information should be same with database")
+    public void informationShouldBeSameWithDatabase() {
+        BrowserUtils.waitFor(3);
     }
 }

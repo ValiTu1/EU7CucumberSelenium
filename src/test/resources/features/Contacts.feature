@@ -4,7 +4,7 @@ Feature: Contacts page
     Given the user is on the login page
     And the user enters the driver information
     When the users navigates to "Customers" "Contacts"
-    Then default page number should be  1
+    #Then default page number should be  1
 
 
   Scenario: Menu options
@@ -32,5 +32,13 @@ Feature: Contacts page
       | user           | firstName | lastName         |
       | user10         | Ara       | Ondricka         |
       | storemanager85 | Pearl     | Tremaine Wuckert |
+
+    @wip
+    Scenario:  Contacts test with email
+      Given the user logged in as "sales manager"
+      And the users navigates to "Customers" "Contacts"
+      When the user clicks the "ab.elias45@gmail.com" from contacts
+      Then information should be same with database
+
 
 
